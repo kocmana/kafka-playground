@@ -1,8 +1,9 @@
 
 = Apache Kafka Setup
 
-== Local Instance Definition
+== Local Instance
 
 Based on
+
 * https://github.com/confluentinc/cp-all-in-one[Confluent's Community Docker Compose files].
 * https://akhq.io/docs/[AKHQ Quick Preview Docker Compose File]
