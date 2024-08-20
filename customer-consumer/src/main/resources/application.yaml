@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: "customer-consumer"
+  kafka:
+    consumer:
+      client-id: customer-consumer
+      group-id: customer-consumers
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      properties:
+        specific.avro.reader: true
