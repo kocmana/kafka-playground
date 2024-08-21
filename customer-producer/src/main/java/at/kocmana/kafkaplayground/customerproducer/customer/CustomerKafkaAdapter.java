@@ -15,10 +15,10 @@ class CustomerKafkaAdapter {
   private final KafkaTemplate<String, Customer> kafkaTemplate;
 
   void publishCustomer(Customer customer) {
-    var resultFuture = kafkaTemplate.sendDefault(customer);
+    var resultFuture = kafkaTemplate.sendDefault(customer.getId(), customer);
     try {
       var result = resultFuture.get();
-      log.info("Published customer '{}' with result '{}'", customer, result.getRecordMetadata().toString());
+      log.info("Published customer '{}' with offset '{}'", customer, result.getRecordMetadata().offset());
     } catch (InterruptedException e) {
       log.error("Interrupted while publishing customer '{}'", customer, e);
       Thread.currentThread().interrupt();

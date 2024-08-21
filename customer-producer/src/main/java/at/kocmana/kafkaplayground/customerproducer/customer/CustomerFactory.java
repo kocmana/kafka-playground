@@ -3,14 +3,16 @@ package at.kocmana.kafkaplayground.customerproducer.customer;
 import at.kocmana.kafkaplayground.Customer;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
 
 @RequiredArgsConstructor
+@Slf4j
 @Service
 class CustomerFactory {
 
-  private static final String EMAIL_TEMPLATE = "%s.%s@%s.%s";
+  private static final String EMAIL_TEMPLATE = "%s.%s@%s";
   private final Faker faker;
 
   Customer generateCustomer() {
@@ -30,8 +32,7 @@ class CustomerFactory {
   private String generateEmailAddress(String firstName, String lastName) {
     return EMAIL_TEMPLATE.formatted(firstName,
             lastName,
-            faker.internet().domainName(),
-            faker.internet().domainSuffix())
+            faker.internet().domainName())
         .toLowerCase();
   }
 
