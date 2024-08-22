@@ -1,12 +1,12 @@
 spring:
   application:
-    name: "customer-consumer"
+    name: "customer-consumer-batch"
   kafka:
     listener:
       concurrency: 1
       type: batch
     consumer:
-      client-id: customer-consumer
+      client-id: customer-consumer-batch
       group-id: customer-consumers
       # Configures the delegating Spring Kafka ErrorHandlingDeserializer
       key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
