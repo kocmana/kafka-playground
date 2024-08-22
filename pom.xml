@@ -20,7 +20,8 @@
     <modules>
         <module>common</module>
         <module>customer-producer</module>
-        <module>customer-consumer</module>
+        <module>customer-consumer-record</module>
+        <module>customer-consumer-batch</module>
     </modules>
 
     <properties>

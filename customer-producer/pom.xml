@@ -10,7 +10,7 @@
     </parent>
 
     <artifactId>customer-producer</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>customer-producer</name>
     <description>customer-producer</description>
 

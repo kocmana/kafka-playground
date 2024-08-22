@@ -2,7 +2,7 @@ spring:
   kafka:
     bootstrap-servers: "localhost:9092"
     template:
-      default-topic: customers
+      default-topic: customers # not really needed as default template channel is not used
     producer:
       client-id: customer-producer
       retries: 3

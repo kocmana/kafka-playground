@@ -13,7 +13,7 @@ public class CustomerController {
 
   private final CustomerService customerService;
 
-  @Scheduled(fixedRate = 1, timeUnit = TimeUnit.SECONDS)
+  @Scheduled(initialDelay = 10, fixedRate = 1, timeUnit = TimeUnit.SECONDS)
   void produceCustomer() {
     log.info("Producing customer");
     var customer = customerService.generateRandomCustomer();

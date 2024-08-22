@@ -1,6 +1,8 @@
 package at.kocmana.kafkaplayground.customerproducer.customer;
 
-import at.kocmana.kafkaplayground.Customer;
+import static at.kocmana.kafkaplayground.kafka.GlobalTopicConfigurationConstants.CUSTOMER_TOPIC;
+
+import at.kocmana.kafkaplayground.model.Customer;
 import java.util.concurrent.ExecutionException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -15,7 +17,7 @@ class CustomerKafkaAdapter {
   private final KafkaTemplate<String, Customer> kafkaTemplate;
 
   void publishCustomer(Customer customer) {
-    var resultFuture = kafkaTemplate.sendDefault(customer.getId(), customer);
+    var resultFuture = kafkaTemplate.send(CUSTOMER_TOPIC, customer.getId(), customer);
     try {
       var result = resultFuture.get();
       log.info("Published customer '{}' with offset '{}'", customer, result.getRecordMetadata().offset());

@@ -1,6 +1,6 @@
 package at.kocmana.kafkaplayground.customerproducer.customer;
 
-import at.kocmana.kafkaplayground.Customer;
+import at.kocmana.kafkaplayground.model.Customer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

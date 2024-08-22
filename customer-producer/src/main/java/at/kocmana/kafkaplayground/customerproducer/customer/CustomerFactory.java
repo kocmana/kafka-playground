@@ -1,6 +1,6 @@
 package at.kocmana.kafkaplayground.customerproducer.customer;
 
-import at.kocmana.kafkaplayground.Customer;
+import at.kocmana.kafkaplayground.model.Customer;
 import java.util.UUID;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,6 +26,7 @@ class CustomerFactory {
         .setFirstName(firstName)
         .setLastName(lastName)
         .setEmail(email)
+        .setIsValid(false)
         .build();
   }
 
