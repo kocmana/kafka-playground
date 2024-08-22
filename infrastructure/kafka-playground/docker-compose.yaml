@@ -77,7 +77,7 @@ services:
       - "8080:8080"
     networks:
       - kafka-playground
-    links:
+    depends_on:
       - broker
       - schema-registry
 
