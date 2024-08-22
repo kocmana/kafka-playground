@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: "customer-consumer-record"
+  kafka:
+    listener:
+      concurrency: 1
+      type: single
+    consumer:
+      client-id: customer-consumer-record
+      group-id: customer-consumers
+      # Configures the delegating Spring Kafka ErrorHandlingDeserializer
+      key-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.ErrorHandlingDeserializer
+      properties:
+        specific.avro.reader: true
+        missing.topics.fatal: true
+        # Delegate deserializers for the ErrorHandlingDeserializer
+        spring.deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
+        spring.deserializer.value.delegate.class: io.confluent.kafka.serializers.KafkaAvroDeserializer
+    # For producing into a dead letter topic
+    producer:
+      acks: all
+      retries: 50
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: io.confluent.kafka.serializers.KafkaAvroSerializer
+      client-id: customer-consumer-record
+      properties:
+        retry:
+          backoff.ms: 250
